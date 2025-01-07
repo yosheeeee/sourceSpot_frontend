@@ -1,6 +1,12 @@
 "use client";
-import Link from "next/link";
 import { redirect, useParams } from "next/navigation";
+import Login from "./login";
+import Registration from "./registration";
+
+const AuthPages = {
+  login: <Login />,
+  registration: <Registration />,
+};
 
 export default function AuthPage() {
   const params = useParams<{ authType: string }>();
@@ -8,13 +14,6 @@ export default function AuthPage() {
     redirect("./login");
   }
   return (
-    <div className="flex gap-3 flex-col">
-      <h1>{params.authType} page</h1>
-      <Link
-        href={`./${params.authType === "login" ? "registration" : "login"}`}
-      >
-        Change
-      </Link>
-    </div>
+    <div className="flex gap-3 flex-col">{AuthPages[params.authType]}</div>
   );
 }
