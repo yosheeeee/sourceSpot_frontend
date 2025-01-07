@@ -4,4 +4,5 @@ export interface IInputField {
   placeholder?: string;
   required?: boolean;
   type?: string;
+  helperText?: string;
 }

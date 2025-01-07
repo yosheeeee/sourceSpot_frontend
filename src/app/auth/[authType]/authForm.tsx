@@ -1,5 +1,6 @@
+"use client";
 import TextOnLine from "@/ui/textOnLine";
-import { TextField, Button } from "@mui/material";
+import { TextField, Button, Typography } from "@mui/material";
 import Link from "next/link";
 import {
   Controller,
@@ -10,6 +11,8 @@ import {
 } from "react-hook-form";
 import GitHubOauthItem from "./gitHubOauthItem";
 import { IInputField } from "@/types/inputs";
+import { generateZodSchema } from "@/functions/generateZodSchema";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 export default function AuthForm<T extends FieldValues>({
   inputFields,
@@ -17,6 +20,7 @@ export default function AuthForm<T extends FieldValues>({
   headingText,
   afterfFromText,
   submitButtonText,
+  error,
 }: {
   inputFields: IInputField[];
   onSubmit: SubmitHandler<T>;
@@ -27,8 +31,16 @@ export default function AuthForm<T extends FieldValues>({
     rerdirectLink: string;
   };
   submitButtonText: string;
+  error?: string;
 }) {
-  const { control, handleSubmit } = useForm<T>();
+  const formSchema = generateZodSchema(inputFields);
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<T>({
+    resolver: zodResolver(formSchema),
+  });
 
   return (
     <form
@@ -36,6 +48,7 @@ export default function AuthForm<T extends FieldValues>({
       onSubmit={handleSubmit(onSubmit)}
     >
       <h1 className="text-4xl">{headingText}</h1>
+      {error?.length != 0 && <Typography color="error">{error}</Typography>}
       {inputFields.map((f) => (
         <Controller
           name={f.name as Path<T>}
@@ -48,6 +61,8 @@ export default function AuthForm<T extends FieldValues>({
               placeholder={f.placeholder}
               label={f.label}
               className="w-[400px]"
+              error={!!errors[f.name]}
+              helperText={errors[f.name]?.message ?? ""}
             />
           )}
           key={f.name}
@@ -56,7 +71,7 @@ export default function AuthForm<T extends FieldValues>({
       <Button variant="contained" type="submit">
         {submitButtonText}
       </Button>
-      <p className="text-gray-700 text-center">
+      <p className="text-gray-400 text-center">
         {afterfFromText.text}{" "}
         <Link className="underline" href={afterfFromText.rerdirectLink}>
           {afterfFromText.linkText}

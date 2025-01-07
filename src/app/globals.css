@@ -5,7 +5,7 @@
 :root {
     /* --background: #ffffff;
   --foreground: #171717; */
-    --md-sys-color-primary: rgb(255 182 139);
+    /* --md-sys-color-primary: rgb(255 182 139);
     --md-sys-color-surface-tint: rgb(255 182 139);
     --md-sys-color-on-primary: rgb(82 35 0);
     --md-sys-color-primary-container: rgb(111 56 17);
@@ -53,7 +53,7 @@
     --md-sys-color-surface-container-low: rgb(34 26 21);
     --md-sys-color-surface-container: rgb(39 30 25);
     --md-sys-color-surface-container-high: rgb(49 40 35);
-    --md-sys-color-surface-container-highest: rgb(61 51 45);
+    --md-sys-color-surface-container-highest: rgb(61 51 45); */
 }
 
 @media (prefers-color-scheme: dark) {

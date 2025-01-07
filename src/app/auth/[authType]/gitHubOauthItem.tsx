@@ -6,7 +6,7 @@ export default function GitHubOauthItem() {
   const params = useParams<{ authType: string }>();
   return (
     <OAuthButton>
-      <GitHubIcon theme="light" />
+      <GitHubIcon />
       <p>
         {params.authType == "registration"
           ? "Sign up with GitHub"

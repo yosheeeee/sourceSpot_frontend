@@ -5,6 +5,7 @@ import {
   TipsAndUpdates,
 } from "@mui/icons-material";
 import React from "react";
+import "./style.scss";
 
 export default function AuthLayout({
   children,

@@ -1,48 +1,14 @@
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import "./globals.css";
-import InitColorSchemeScript from "@mui/material/InitColorSchemeScript";
-import { createTheme } from "@mui/material";
-import { ThemeProvider } from "@emotion/react";
+import { ThemeProvider } from "@mui/material";
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
+import theme from "@/ui/theme";
+import { AuthProviderWithStore } from "@/stores/auth";
 
 const font = Roboto({
   subsets: ["latin", "cyrillic"],
   weight: "400",
-});
-
-const theme = createTheme({
-  cssVariables: {
-    colorSchemeSelector: "class",
-  },
-  palette: {
-    primary: {
-      main: "#FFB68B", // var(--md-sys-color-primary)
-      contrastText: "#522300", // var(--md-sys-color-on-primary)
-    },
-    secondary: {
-      main: "#E5BFA9", // var(--md-sys-color-secondary)
-      contrastText: "#432B1C", // var(--md-sys-color-on-secondary)
-    },
-    background: {
-      default: "#1A120D", // var(--md-sys-color-background)
-      paper: "#1A120D", // var(--md-sys-color-surface)
-    },
-    text: {
-      primary: "#F0DFD7", // var(--md-sys-color-on-background)
-      secondary: "#F0DFD7", // var(--md-sys-color-on-surface)
-    },
-    error: {
-      main: "#FFB4AB", // var(--md-sys-color-error)
-      contrastText: "#690005", // var(--md-sys-color-on-error)
-    },
-    surface: {
-      main: "#1A120D", // var(--md-sys-color-surface)
-      contrastText: "#F0DFD7", // var(--md-sys-color-on-surface)
-    },
-    outline: {
-      main: "#9F8D84", // var(--md-sys-color-outline)
-    },
-  },
 });
 
 export const metadata: Metadata = {
@@ -58,8 +24,11 @@ export default function RootLayout({
   return (
     <html lang="en" className="w-[100vw] h-[100vh]">
       <body className={`${font.className} antialiased w-full h-full`}>
-        <InitColorSchemeScript attribute="class" />
-        <main className="w-full h-full">{children}</main>
+        <AuthProviderWithStore>
+          <AppRouterCacheProvider>
+            <ThemeProvider theme={theme}>{children}</ThemeProvider>
+          </AppRouterCacheProvider>
+        </AuthProviderWithStore>
       </body>
     </html>
   );
