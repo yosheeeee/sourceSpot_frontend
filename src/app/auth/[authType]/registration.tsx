@@ -15,6 +15,12 @@ interface IRegistrationForm {
 
 const inputFields: IInputField[] = [
   {
+    name: "login",
+    label: "Login",
+    required: true,
+    type: "text",
+  },
+  {
     name: "name",
     label: "Name",
     required: true,

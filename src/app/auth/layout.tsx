@@ -6,12 +6,28 @@ import {
 } from "@mui/icons-material";
 import React from "react";
 import "./style.scss";
+import { headers } from "next/headers";
+import { redirect } from "next/navigation";
 
 export default function AuthLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const headersList = headers();
+  const cookies = headersList.get("cookie") || "";
+
+  // Ищем токен в куках
+  const token = cookies
+    .split("; ")
+    .find((row) => row.startsWith("_auth="))
+    ?.split("=")[1];
+
+  // Если токен существует, перенаправляем на главную страницу
+  if (token) {
+    redirect("/");
+  }
+
   return (
     <main
       id="auth-section"
