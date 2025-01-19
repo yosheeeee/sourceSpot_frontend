@@ -9,7 +9,7 @@ export default function GitHubOauthItem() {
   const clickHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     router.push(
-      `https://github.com/login/oauth/authorize?client_id=${process.env.NEXT_PUBLIC_GITHUB_CLIENT_ID}`,
+      `https://github.com/login/oauth/authorize?client_id=${process.env.NEXT_PUBLIC_GITHUB_CLIENT_ID}&scope=read:user user:email public_repo`,
     );
   };
 
