@@ -44,7 +44,7 @@ export default function AuthForm<T extends FieldValues>({
 
   return (
     <form
-      className="flex flex-col gap-3 p-6 border-gray-500 rounded-md border"
+      className="flex flex-col gap-3 p-6 border-gray-500 rounded-md border max-w-full overflow-hidden"
       onSubmit={handleSubmit(onSubmit)}
     >
       <h1 className="text-4xl">{headingText}</h1>

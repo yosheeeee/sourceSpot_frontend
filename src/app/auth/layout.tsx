@@ -31,7 +31,7 @@ export default function AuthLayout({
   return (
     <main
       id="auth-section"
-      className="w-full h-full flex items-center justify-center gap-[10vw]"
+      className="w-full h-full flex flex-wrap items-center justify-center gap-[10vw]"
     >
       <section className="auth-text-section w-[400px]">
         <h1 className="text-6xl mb-6">SourceSpot</h1>
