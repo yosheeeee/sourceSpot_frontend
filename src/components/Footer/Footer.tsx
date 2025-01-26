@@ -5,7 +5,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { useMemo } from "react";
 import useIsAuthenticated from "react-auth-kit/hooks/useIsAuthenticated";
 
-interface INavigationButton {
+export interface INavigationButton {
   title: string;
   matchPath: string;
   icon: React.ReactNode;
