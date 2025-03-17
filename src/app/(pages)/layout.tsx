@@ -9,7 +9,7 @@ export default function PagesLayout({
   return (
     <section id="app" className="flex flex-col min-h-screen">
       <Header />
-      <main className="flex-grow">{children}</main>
+      <main className="flex-grow w-[80vw] mx-auto">{children}</main>
       <Footer />
     </section>
   );
