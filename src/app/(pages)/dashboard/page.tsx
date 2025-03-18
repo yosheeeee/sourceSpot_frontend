@@ -1,17 +1,20 @@
-import { Avatar } from "@mui/material";
 import { AuthorLink, Tag } from "@/components/some_sheet/ui";
+import Link from "next/link";
 
-interface IProjectProps {
+export interface IProjectProps {
   name: string;
   imageSrc?: string;
   description?: string;
-  author: {
-    nickname: string;
-    avatarSrc?: string;
-  };
+  author: IAuthor;
   tags: string[];
+  id: number;
 }
-const projects: IProjectProps[] = [
+
+export interface IAuthor {
+  nickname: string;
+  avatarSrc?: string;
+}
+export const projects: IProjectProps[] = [
   {
     name: "Project Alpha",
     description: "A cutting-edge AI-powered project for data analysis.",
@@ -20,8 +23,10 @@ const projects: IProjectProps[] = [
       avatarSrc: "https://example.com/avatars/techguru.png",
     },
     tags: ["AI", "Data Science", "Machine Learning"],
+    id: 1,
   },
   {
+    id: 2,
     name: "EcoFriendly App",
     description: "An app designed to promote sustainable living practices.",
     author: {
@@ -30,6 +35,7 @@ const projects: IProjectProps[] = [
     tags: ["Sustainability", "Mobile App", "Environment"],
   },
   {
+    id: 3,
     name: "CloudSync Tool",
     author: {
       nickname: "CloudMaster",
@@ -38,6 +44,7 @@ const projects: IProjectProps[] = [
     tags: ["Cloud Storage", "Backup", "Automation"],
   },
   {
+    id: 4,
     name: "GameDev Framework",
     description: "A lightweight framework for creating 2D games.",
     author: {
@@ -46,6 +53,7 @@ const projects: IProjectProps[] = [
     tags: ["Game Development", "2D Graphics", "JavaScript"],
   },
   {
+    id: 5,
     name: "Crypto Wallet",
     description: "A secure and user-friendly cryptocurrency wallet.",
     author: {
@@ -75,20 +83,28 @@ function ProjectBlock({
   tags,
   description,
   imageSrc,
+  id,
 }: IProjectProps) {
   return (
-    <div className="project-block">
-      <img loading="lazy" src={imageSrc ? imageSrc : "/project-example.png"} />
+    <div className="project-block ">
+      <Link href={`/project/${id}`}>
+        <img
+          loading="lazy"
+          src={imageSrc ? imageSrc : "/project-example.png"}
+        />
+      </Link>
+      <Link href={`/project/${id}`}>
+        <p className="project-name text-lg hover:underline">{name}</p>
+      </Link>
+      <AuthorLink {...author} />
+      <p className="description line-clamp-3 overflow-hidden text-ellipsis">
+        {description}
+      </p>
       <div className="tags flex items-center flex-wrap gap-2">
         {tags.map((t) => (
           <Tag name={t} key={t} />
         ))}
       </div>
-      <p className="project-name">{name}</p>
-      <AuthorLink {...author} />
-      <p className="description line-clamp-3 overflow-hidden text-ellipsis">
-        {description}
-      </p>
     </div>
   );
 }
