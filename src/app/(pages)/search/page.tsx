@@ -1,5 +1,5 @@
-import { IProjectProps } from "@/models/IProjectProps";
 import ProjectCard from "@/components/ProjectCard";
+import { IProjectProps } from "@/models/IProjectProps";
 
 const projects: IProjectProps[] = [
 	{
@@ -46,12 +46,22 @@ const projects: IProjectProps[] = [
 	},
 ];
 
-export default function Dashboard() {
+export default async function searchPage({
+	searchParams,
+}: {
+	searchParams: Promise<{
+		q: string;
+	}>;
+}) {
+	const { q: query } = await searchParams;
+
 	return (
-		<div className="popular-projects">
-			<h1 className="text-3xl font-medium mb-4">Popular projects</h1>
+		<div>
+			<h1 className="text-3xl font-medium mb-4">
+				{query ? `"${query}" search results` : "Search results"}
+			</h1>
 			<div
-				className="grid gap-5"
+				className="grid"
 				style={{
 					gridTemplateColumns: "repeat(auto-fit, minmax(400px, 1fr))",
 				}}
