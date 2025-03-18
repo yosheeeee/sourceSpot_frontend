@@ -1,10 +1,26 @@
-import { SearchRounded } from "@mui/icons-material";
+import { Input } from "@mui/material";
+import Form from "next/form";
+import { redirect } from "next/navigation";
 
 export default function SearchBlock() {
-  return (
-    <div className="search-container flex items-center py-2 px-5 border-2 border-gray-500 rounded-md">
-      <input type="text" className="outline-none" placeholder="Search..." />
-      <SearchRounded />
-    </div>
-  );
+	const onSubmit = async (data: FormData) => {
+		"use server";
+		console.log(data);
+		const query = data.get("query") || "";
+		if (query) redirect(`/search?q=${query}`);
+	};
+
+	return (
+		<Form
+			className="hidden md:block w-full max-w-[450px]"
+			action={onSubmit}
+		>
+			<Input
+				name="query"
+				className="w-full h-11"
+				type="text"
+				placeholder="Search..."
+			/>
+		</Form>
+	);
 }
