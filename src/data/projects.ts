@@ -24,7 +24,7 @@ export const projects: IProjectProps[] = [
   {
     id: 1,
     name: "Task Manager",
-    imageSrc: "https://example.com/task-manager.png",
+    imageSrc: "/projects/1.png",
     description:
       "Проект для управления задачами с использованием React и Node.js",
     author: authors[0],
@@ -50,7 +50,7 @@ export const projects: IProjectProps[] = [
   {
     id: 3,
     name: "Social Network",
-    imageSrc: "https://example.com/social.png",
+    imageSrc: "/projects/3.png",
     description: "Социальная сеть с функциями ленты новостей и мессенджера",
     author: authors[2],
     tags: ["React", "Firebase", "Redux"],
@@ -71,7 +71,7 @@ export const projects: IProjectProps[] = [
   {
     id: 5,
     name: "Movie Database",
-    imageSrc: "https://example.com/movies.png",
+    imageSrc: "/projects/5.png",
     description: "Приложение для поиска фильмов с TMDB API",
     author: authors[4],
     tags: ["Next.js", "TypeScript", "API"],
@@ -93,7 +93,7 @@ export const projects: IProjectProps[] = [
   {
     id: 7,
     name: "Blog Platform",
-    imageSrc: "https://example.com/blog.png",
+    imageSrc: "/projects/7.png",
     author: authors[1],
     tags: ["Django", "Python", "PostgreSQL"],
     comments: [{ author: authors[2], content: "Нужен WYSIWYG редактор" }],
@@ -114,7 +114,7 @@ export const projects: IProjectProps[] = [
   {
     id: 9,
     name: "Recipe Book",
-    imageSrc: "https://example.com/recipes.png",
+    imageSrc: "/projects/9.png",
     author: authors[3],
     tags: ["Angular", "Firebase", "PWA"],
     comments: [{ author: authors[4], content: "Классные рецепты!" }],
@@ -135,7 +135,7 @@ export const projects: IProjectProps[] = [
   {
     id: 11,
     name: "E-commerce Template",
-    imageSrc: "https://example.com/ecommerce.png",
+    imageSrc: "/projects/11.png",
     author: authors[0],
     tags: ["Next.js", "Stripe", "Prisma"],
     comments: [{ author: authors[1], content: "Отличная интеграция оплаты" }],
@@ -155,7 +155,7 @@ export const projects: IProjectProps[] = [
   {
     id: 13,
     name: "Quiz App",
-    imageSrc: "https://example.com/quiz.png",
+    imageSrc: "/projects/13.png",
     author: authors[2],
     tags: ["React", "TypeScript", "API"],
     description: "Викторина с вопросами из открытого API",

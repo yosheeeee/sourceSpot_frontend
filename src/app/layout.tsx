@@ -23,7 +23,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="w-[100vw] h-[100vh]">
-      <body className={`${font.className} antialiased w-full h-full`}>
+      <body
+        className={`${font.className} antialiased w-full h-full overflow-hidden`}
+      >
         <AuthProviderWithStore>
           <AppRouterCacheProvider>
             <ThemeProvider theme={theme}>{children}</ThemeProvider>

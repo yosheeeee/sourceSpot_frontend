@@ -2,9 +2,12 @@ import Link from "next/link";
 
 export function Tag({ name }: { name: string }) {
   return (
-    <div className="cursor-pointer bg-blue-950 text-blue-400 rounded-3xl text-sm py-1 px-4 transition-colors hover:bg-blue-900 hover:text-blue-300">
+    <Link
+      href={`/search?q=${name}`}
+      className="cursor-pointer bg-blue-950 text-blue-400 rounded-3xl text-sm py-1 px-4 transition-colors hover:bg-blue-900 hover:text-blue-300"
+    >
       {name}
-    </div>
+    </Link>
   );
 }
 
