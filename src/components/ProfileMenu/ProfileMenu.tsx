@@ -1,9 +1,8 @@
 "use client";
 
 import { BACKEND_PATH } from "@/constants/backend_path";
-import { Login, Logout, PersonRounded } from "@mui/icons-material";
+import { Login, Logout } from "@mui/icons-material";
 import {
-	Avatar,
 	ListItemIcon,
 	ListItemText,
 	Menu,

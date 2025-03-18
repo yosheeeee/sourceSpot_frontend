@@ -4,6 +4,7 @@ export interface IAuthor {
 }
 
 export interface IProjectProps {
+	id: number;
 	name: string;
 	imageSrc?: string;
 	description?: string;
