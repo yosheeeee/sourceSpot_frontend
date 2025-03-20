@@ -74,7 +74,6 @@ export default function ProfileMenu() {
 			})
 				.then((res) => res.json() as IProfileData)
 				.then((data) => {
-					console.log(data);
 					setProfileData(data);
 				})
 				.catch((e) => console.log(e));

@@ -7,31 +7,29 @@ import theme from "@/ui/theme";
 import { AuthProviderWithStore } from "@/stores/auth";
 
 const font = Roboto({
-  subsets: ["latin", "cyrillic"],
-  weight: "400",
+	subsets: ["latin", "cyrillic"],
+	weight: "400",
 });
 
 export const metadata: Metadata = {
-  title: "SourceSpot",
-  description: "Spot for your pet projects",
+	title: "SourceSpot",
+	description: "Spot for your pet projects",
 };
 
 export default function RootLayout({
-  children,
+	children,
 }: Readonly<{
-  children: React.ReactNode;
+	children: React.ReactNode;
 }>) {
-  return (
-    <html lang="en" className="w-[100vw] h-[100vh]">
-      <body
-        className={`${font.className} antialiased w-full h-full overflow-hidden`}
-      >
-        <AuthProviderWithStore>
-          <AppRouterCacheProvider>
-            <ThemeProvider theme={theme}>{children}</ThemeProvider>
-          </AppRouterCacheProvider>
-        </AuthProviderWithStore>
-      </body>
-    </html>
-  );
+	return (
+		<html lang="en" className="w-full h-full">
+			<body className={`${font.className} antialiased w-full h-full`}>
+				<AuthProviderWithStore>
+					<AppRouterCacheProvider>
+						<ThemeProvider theme={theme}>{children}</ThemeProvider>
+					</AppRouterCacheProvider>
+				</AuthProviderWithStore>
+			</body>
+		</html>
+	);
 }

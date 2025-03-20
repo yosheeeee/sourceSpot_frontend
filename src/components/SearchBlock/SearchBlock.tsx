@@ -5,7 +5,6 @@ import { redirect } from "next/navigation";
 export default function SearchBlock() {
 	const onSubmit = async (data: FormData) => {
 		"use server";
-		console.log(data);
 		const query = data.get("query") || "";
 		if (query) redirect(`/search?q=${query}`);
 	};
