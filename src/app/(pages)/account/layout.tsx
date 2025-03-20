@@ -8,7 +8,7 @@ const profileNavigationLinks: INavigationButton[] = [
 	{
 		title: "Main",
 		icon: <ManageAccountsRounded />,
-		matchPath: "/account/",
+		matchPath: "/account",
 	},
 	{
 		title: "My Projects",
